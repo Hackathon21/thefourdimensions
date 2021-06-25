@@ -1,6 +1,9 @@
 package com.example.backend.controller;
 
+import com.example.backend.DTO.MedicineUpload;
+import com.example.backend.model.Medicine;
 import com.example.backend.model.Store;
+import com.example.backend.services.MedicineService;
 import com.example.backend.services.StoreService;
 import com.example.backend.utils.UtilFunctions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +29,8 @@ public class StoreController {
     StoreService service;
     @Autowired
     HttpServletRequest request;
+    @Autowired
+    MedicineService service1;
 
     @PostMapping("/createStore")
     public ResponseEntity<?> createNewStore(@RequestBody Store store){
@@ -59,6 +64,26 @@ public class StoreController {
                     .contentType(MediaType.parseMediaType(store.getContentType()))
                     .header(HttpHeaders.CONTENT_DISPOSITION,"attachment; filename=\""+resource.getFilename()+"\"")
                     .body(resource);
+        }catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/addMedicine/{phone}")
+    public ResponseEntity<?> addMedicine(@PathVariable String phone,@RequestBody MedicineUpload medicine){
+        try{
+            Store store = service.getByPhone(phone);
+            boolean has = false;
+            Medicine medicine2 = service1.getByName(medicine.getName());
+            Medicine medicine1;
+//            if(medicine2==null)
+//                medicine1 = new Medicine(store,medicine.getName(),medicine.getStock(),medicine.getPrice());
+//            else{
+//                medicine2.
+//            }
+            store.addMedicine(medicine1);
+            service.updateStore(store);
+            return new ResponseEntity<>("Successfully updated!",HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
         }

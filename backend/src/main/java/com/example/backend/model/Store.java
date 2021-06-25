@@ -1,7 +1,11 @@
 package com.example.backend.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -13,17 +17,22 @@ public class Store {
     private String phoneNumber;
     private String filename;
     private String contentType;
+    private String pincode;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Medicine> medicineList;
 
     public Store() {
         this.id=UUID.randomUUID();
         this.filename = "";
         this.contentType = "";
+        this.medicineList = new ArrayList<>();
     }
 
-    public Store(String name, String address, String phoneNumber, String filename) {
+    public Store(String name, String address, String phoneNumber, String pincode) {
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.pincode = pincode;
     }
 
     public UUID getId() {
@@ -72,5 +81,25 @@ public class Store {
 
     public void setContentType(String contentType) {
         this.contentType = contentType;
+    }
+
+    public List<Medicine> getMedicineList() {
+        return medicineList;
+    }
+
+    public void setMedicineList(List<Medicine> medicineList) {
+        this.medicineList = medicineList;
+    }
+
+    public void addMedicine(Medicine medicine){
+        this.medicineList.add(medicine);
+    }
+
+    public String getPincode() {
+        return pincode;
+    }
+
+    public void setPincode(String pincode) {
+        this.pincode = pincode;
     }
 }
