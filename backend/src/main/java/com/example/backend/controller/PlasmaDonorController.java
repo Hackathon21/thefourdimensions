@@ -37,4 +37,13 @@ public class PlasmaDonorController {
             return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping("/getAllDonors")
+    public ResponseEntity<?> getAll(){
+        try{
+            return new ResponseEntity<>(services.getAll(),HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
