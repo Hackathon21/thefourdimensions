@@ -46,4 +46,12 @@ public class PlasmaDonorServices {
             throw e;
         }
     }
+
+    public List<PlasmaDonor> getDonorsByPincodeAndBloodGroup(String pincode,String bloodgroup){
+        try {
+            return repo.getPlasmaDonorByPincodeAndBloodGroup(pincode,bloodgroup);
+        }catch (Exception e){
+            throw e;
+        }
+    }
 }
