@@ -26,14 +26,34 @@ public class StoreService {
         }
     }
 
-    public void addFile(UUID id, MultipartFile file){
+    public void addFile(UUID id, MultipartFile file)throws Exception{
         try {
             Store store = repo.getById(id);
             store.setFilename(file.getOriginalFilename());
-            String uploadDir = "/uploads/";
-            String path = request.getServletContext().getRealPath(uploadDir);
-            file.transferTo(new File(path));
+            store.setContentType(file.getContentType());
+            updateStore(store);
+            String uploadDir = "D:\\uploads\\";
+            String path = uploadDir;
+            file.transferTo(new File(path+file.getOriginalFilename()));
         }catch (Exception e){
+            throw e;
+        }
+    }
+
+    public void updateStore(Store store){
+        try{
+            repo.save(store);
+        }catch (Exception e){
+            throw e;
+        }
+    }
+
+    public Store getStore(UUID id){
+        try{
+            Store store = repo.getById(id);
+            return store;
+        }catch (Exception e){
+            throw e;
         }
     }
 }
