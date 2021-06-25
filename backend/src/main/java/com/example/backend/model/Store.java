@@ -12,15 +12,18 @@ public class Store {
     private String address;
     private String phoneNumber;
     private String filename;
+    private String contentType;
 
     public Store() {
+        this.id=UUID.randomUUID();
+        this.filename = "";
+        this.contentType = "";
     }
 
     public Store(String name, String address, String phoneNumber, String filename) {
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.filename = filename;
     }
 
     public UUID getId() {
@@ -61,5 +64,13 @@ public class Store {
 
     public void setFilename(String filename) {
         this.filename = filename;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 }
