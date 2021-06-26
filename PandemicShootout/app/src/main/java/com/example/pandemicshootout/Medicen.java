@@ -26,7 +26,7 @@ public class Medicen extends AppCompatActivity {
             public void onClick(View view) {
                 Intent I=new Intent(Medicen.this, AvailableMed.class);
                 I.putExtra("name",medicineName.getText().toString());
-                I.putExtra("pincode",medicineName.getText().toString());
+                I.putExtra("pincode",pincode.getText().toString());
                 startActivity(I);
             }
         });

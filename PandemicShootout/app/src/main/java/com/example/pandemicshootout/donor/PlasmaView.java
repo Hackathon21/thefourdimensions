@@ -7,10 +7,9 @@ public class PlasmaView {
     private String pincode;
     private String phoneNumber;
 
-    public PlasmaView(String name, String bloodGroup, String validId, String city, String phoneNumber) {
+    public PlasmaView(String name, String bloodGroup, String city, String phoneNumber) {
         this.name = name;
         this.bloodGroup = bloodGroup;
-        this.validId = validId;
         this.pincode = city;
         this.phoneNumber = phoneNumber;
     }

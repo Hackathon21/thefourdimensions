@@ -14,6 +14,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.pandemicshootout.Constants;
 import com.example.pandemicshootout.R;
 
 import org.json.JSONArray;
@@ -38,8 +39,11 @@ public class AvailableMed extends AppCompatActivity {
         String name = i.getExtras().getString("name");
         String pincode = i.getExtras().getString("pincode");
 
-//        url = Constants.server+"/medicine/"+name+"/"+pincode;
-        url = "http://192.168.10.110:8080/medicine/Solvincold/387843";
+        Log.d("name",name);
+        Log.d("pincode",pincode);
+
+        url = Constants.server+"/medicine/"+name+"/"+pincode;
+//        url = "http://192.168.10.110:8080/medicine/Solvincold/387843";
         requestQueue = Volley.newRequestQueue(this);
 
         MedicineAdapter md=new MedicineAdapter(this,m);

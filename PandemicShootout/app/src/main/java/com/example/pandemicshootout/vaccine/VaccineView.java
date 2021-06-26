@@ -7,14 +7,13 @@ public class VaccineView {
     private double longitude;
     private long age_limit;
     private String vaccine;
+    private long available_capacity;
 
-    public VaccineView(String name, String pincode, double latitude, double longitude, long age_limit, String vaccine) {
+    public VaccineView(String name, long available_capacity, long age_limit, String vaccine) {
         this.name = name;
-        this.pincode = pincode;
-        this.latitude = latitude;
-        this.longitude = longitude;
         this.age_limit = age_limit;
         this.vaccine = vaccine;
+        this.available_capacity = available_capacity;
     }
 
     public String getName() {

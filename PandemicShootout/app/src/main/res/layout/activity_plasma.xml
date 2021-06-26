@@ -74,7 +74,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:backgroundTint="#5CB4EF"
-        android:onClick="pd"
         android:text="Search for Match"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
