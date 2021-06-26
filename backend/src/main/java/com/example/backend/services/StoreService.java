@@ -1,5 +1,6 @@
 package com.example.backend.services;
 
+import com.example.backend.DTO.MedicineUpload;
 import com.example.backend.model.Medicine;
 import com.example.backend.model.Store;
 import com.example.backend.repository.StoreRepository;
@@ -18,7 +19,7 @@ public class StoreService {
     @Autowired
     private StoreRepository repo;
     @Autowired
-    private HttpServletRequest request;
+    private MedicineService medicineService;
 
     public void addStore(Store store){
         try{
@@ -74,9 +75,26 @@ public class StoreService {
 
     public Store getByPhone(String phone){
         try{
-            repo.getStoreByPincode(phone);
+            return repo.getStoreByPhoneNumber(phone);
         }catch (Exception e){
             throw e;
         }
     }
+
+    public void updateMedicineList(Store store,MedicineUpload medicineUpload){
+        try{
+            Medicine m = medicineService.getByName(medicineUpload.getName());
+            if(m==null){
+                m = new Medicine(store, medicineUpload.getName(), medicineUpload.getStock(), medicineUpload.getPrice());
+            }
+            else{
+                m.setPrice(medicineUpload.getPrice());
+                m.setStock(medicineUpload.getStock() + m.getStock());
+            }
+            medicineService.updateMedicine(m);
+        }catch(Exception e){
+            throw e;
+        }
+    }
+
 }

@@ -73,15 +73,7 @@ public class StoreController {
     public ResponseEntity<?> addMedicine(@PathVariable String phone,@RequestBody MedicineUpload medicine){
         try{
             Store store = service.getByPhone(phone);
-            boolean has = false;
-            Medicine medicine2 = service1.getByName(medicine.getName());
-            Medicine medicine1;
-//            if(medicine2==null)
-//                medicine1 = new Medicine(store,medicine.getName(),medicine.getStock(),medicine.getPrice());
-//            else{
-//                medicine2.
-//            }
-            store.addMedicine(medicine1);
+            service.updateMedicineList(store,medicine);
             service.updateStore(store);
             return new ResponseEntity<>("Successfully updated!",HttpStatus.OK);
         }catch (Exception e){

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class MedicineService {
@@ -37,5 +38,13 @@ public class MedicineService {
 
     public Medicine getByName(String name){
         return repository.getMedicineByName(name);
+    }
+
+    public void updateMedicine(Medicine medicine){
+        try{
+            repository.save(medicine);
+        }catch(Exception e){
+            throw e;
+        }
     }
 }

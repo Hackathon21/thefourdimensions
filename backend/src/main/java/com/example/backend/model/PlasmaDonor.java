@@ -11,7 +11,7 @@ public class PlasmaDonor {
     private String name;
     private String bloodGroup;
     private String validId;
-    private String city;
+    private String pincode;
     private String phoneNumber;
     private boolean isEnabled;
 
@@ -24,7 +24,7 @@ public class PlasmaDonor {
         this.name = name;
         this.bloodGroup = bloodGroup;
         this.validId = validId;
-        this.city = city;
+        this.pincode = city;
         this.phoneNumber = phoneNumber;
     }
 
@@ -60,12 +60,12 @@ public class PlasmaDonor {
         this.validId = validId;
     }
 
-    public String getCity() {
-        return city;
+    public String getPincode() {
+        return pincode;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setPincode(String city) {
+        this.pincode = city;
     }
 
     public String getPhoneNumber() {
