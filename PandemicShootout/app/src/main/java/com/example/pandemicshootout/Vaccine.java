@@ -10,6 +10,8 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.pandemicshootout.vaccine.Available_vaccine;
+
 import java.util.Calendar;
 
 public class Vaccine extends AppCompatActivity {
@@ -45,7 +47,7 @@ public class Vaccine extends AppCompatActivity {
     }
     public void vac(View v)
     {
-        Intent in=new Intent(Vaccine.this,Available_vaccine.class);
+        Intent in=new Intent(Vaccine.this, Available_vaccine.class);
         startActivity(in);
     }
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/g8"
-    tools:context=".AvailableBeds">
+    tools:context=".bed.AvailableBeds">
 
     <ImageView
         android:id="@+id/imageView14"
@@ -18,4 +18,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ab" />
 
+    <ListView
+        android:id="@+id/bedlist"
+        android:layout_width="400dp"
+        android:layout_height="635dp"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="16dp"
+        android:divider="@color/black"
+        android:dividerHeight="1dp"
+        android:padding="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView14"
+        app:layout_constraintVertical_bias="0.767"></ListView>
 </androidx.constraintlayout.widget.ConstraintLayout>
