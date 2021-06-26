@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
@@ -23,6 +24,11 @@ public class Vaccine extends AppCompatActivity {
         setContentView(R.layout.activity_vaccine);
        date=findViewById(R.id.editText1);
         date.setInputType(InputType.TYPE_NULL);
+
+        EditText pin = findViewById(R.id.editTextTextPersonName2);
+        Button submit = findViewById(R.id.button3);
+
+        int day2,month2,year2;
        date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,15 +45,19 @@ public class Vaccine extends AppCompatActivity {
                             }
                         }, year, month, day);
                 picker.show();
-
             }
         });
 
+       submit.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               Intent in=new Intent(Vaccine.this, Available_vaccine.class);
+               String k[] = date.getText().toString().split("/");
+               in.putExtra("pincode",pin.getText().toString());
+               in.putExtra("date",k);
+               startActivity(in);
+           }
+       });
 
-    }
-    public void vac(View v)
-    {
-        Intent in=new Intent(Vaccine.this, Available_vaccine.class);
-        startActivity(in);
     }
 }
