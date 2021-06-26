@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.persistence.EntityExistsException;
 import javax.servlet.http.HttpServletRequest;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -33,6 +34,7 @@ public class StoreController {
     @PostMapping("/createStore")
     public ResponseEntity<?> createNewStore(@RequestBody Store store){
         try{
+            if(service.getByPhone(store.getPhoneNumber())!=null)throw new EntityExistsException();
             service.addStore(store);
             return new ResponseEntity<>(store,HttpStatus.OK);
         }catch (Exception e){
@@ -47,15 +49,14 @@ public class StoreController {
             Medicine medicine1 = service1.getByName(medicine.getName());
             if(medicine1==null){
                 medicine1 = new Medicine();
-                medicine1.setName(medicine.getName());
+                medicine1.addStore(store);
+                medicine1.setStoreName(store.getName());
+                medicine1.setPrice(medicine.getPrice());
                 medicine1.setStock(medicine.getStock());
-                medicine1.setPrice(medicine.getPrice());
-                medicine1.setStore(store);
-                store.addMedicine(medicine1);
+                medicine1.setName(medicine.getName());
             }else{
-                medicine1.setStock(medicine.getStock()+medicine1.getStock());
-                medicine1.setPrice(medicine.getPrice());
-                service1.updateMedicine(medicine1);
+                medicine1.setStock(medicine1.getStock()+medicine.getStock());
+                medicine1.setPrice(medicine1.getPrice());
             }
             service.updateStore(store);
             return new ResponseEntity<>("Successfully updated!",HttpStatus.OK);
@@ -64,3 +65,17 @@ public class StoreController {
         }
     }
 }
+//if(medicine1==null){
+//                medicine1 = new Medicine();
+//                medicine1.setName(medicine.getName());
+//                medicine1.setStock(medicine.getStock());
+//                medicine1.setPrice(medicine.getPrice());
+//                medicine1.setStore(store);
+//                medicine1.setStoreName(store.getName());
+//                store.addMedicine(medicine1);
+//            }else{
+//                medicine1.setStock(medicine.getStock()+medicine1.getStock());
+//                medicine1.setPrice(medicine.getPrice());
+//                service1.updateMedicine(medicine1);
+//            }
+//            service.updateStore(store);
