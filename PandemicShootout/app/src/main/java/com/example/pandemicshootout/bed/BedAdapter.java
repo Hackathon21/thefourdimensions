@@ -36,11 +36,11 @@ public class BedAdapter extends ArrayAdapter<BedView> {
         TextView storeName=listItemView.findViewById(R.id.mn2);
         TextView price=listItemView.findViewById(R.id.mn3);
         TextView stock=listItemView.findViewById(R.id.mn4);
-        stock.setVisibility(View.GONE);
 
         medicineName.setText("Name: "+bedView.getName());
-        storeName.setText("Blood Group: "+bedView.getContact());
-        price.setText("Pincode: "+String.valueOf(bedView.getBeds()));
+        storeName.setText("Contact: "+bedView.getContact());
+        price.setText("Beds: "+String.valueOf(bedView.getBeds()));
+        stock.setText("Oxygen: "+String.valueOf(bedView.getOxygen()));
 
         return listItemView;
     }

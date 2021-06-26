@@ -38,7 +38,7 @@ public class VaccineAdapter extends ArrayAdapter<VaccineView> {
         TextView stock=listItemView.findViewById(R.id.mn4);
 
        vaccineName.setText("Center Name: "+vaccineView.getName());
-        storeName.setText("Pincode: "+vaccineView.getPincode());
+        storeName.setText("Available: "+vaccineView.getAvailable_capacity());
         price.setText("Age Limit: "+String.valueOf(vaccineView.getAge_limit()));
         stock.setText("Vaccine: "+String.valueOf(vaccineView.getVaccine()));
 

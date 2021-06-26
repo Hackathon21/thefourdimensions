@@ -4,15 +4,15 @@ public class BedView {
     private String name;
     private String contact;
     private long beds;
+    private String oxygen;
     private String latitude;
     private String longitude;
 
-    public BedView(String name, String contact, long beds, String latitude, String longitude) {
+    public BedView(String name, String contact, long beds, String oxygen) {
         this.name = name;
         this.contact = contact;
         this.beds = beds;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.oxygen = oxygen;
     }
 
     public String getName() {
@@ -53,5 +53,13 @@ public class BedView {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
+    }
+
+    public String getOxygen() {
+        return oxygen;
+    }
+
+    public void setOxygen(String oxygen) {
+        this.oxygen = oxygen;
     }
 }
