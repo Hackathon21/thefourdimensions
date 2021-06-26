@@ -1,32 +1,20 @@
 package com.example.pandemicshootout.vaccine;
 
 public class VaccineView {
-    private float price;
-    private long stock;
     private String name;
-    private String storeName;
+    private String pincode;
+    private double latitude;
+    private double longitude;
+    private long age_limit;
+    private String vaccine;
 
-    public VaccineView(float price, long stock, String name, String storeName) {
-        this.price = price;
-        this.stock = stock;
+    public VaccineView(String name, String pincode, double latitude, double longitude, long age_limit, String vaccine) {
         this.name = name;
-        this.storeName = storeName;
-    }
-
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    public long getStock() {
-        return stock;
-    }
-
-    public void setStock(long stock) {
-        this.stock = stock;
+        this.pincode = pincode;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.age_limit = age_limit;
+        this.vaccine = vaccine;
     }
 
     public String getName() {
@@ -37,11 +25,43 @@ public class VaccineView {
         this.name = name;
     }
 
-    public String getStoreName() {
-        return storeName;
+    public String getPincode() {
+        return pincode;
     }
 
-    public void setStoreName(String storeName) {
-        this.storeName = storeName;
+    public void setPincode(String pincode) {
+        this.pincode = pincode;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public long getAge_limit() {
+        return age_limit;
+    }
+
+    public void setAge_limit(long age_limit) {
+        this.age_limit = age_limit;
+    }
+
+    public String getVaccine() {
+        return vaccine;
+    }
+
+    public void setVaccine(String vaccine) {
+        this.vaccine = vaccine;
     }
 }

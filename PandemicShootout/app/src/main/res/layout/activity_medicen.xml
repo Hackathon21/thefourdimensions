@@ -81,7 +81,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:backgroundTint="#5CB4EF"
-        android:onClick="am"
         android:text="Check Availability"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

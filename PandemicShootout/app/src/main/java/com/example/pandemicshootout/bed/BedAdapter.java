@@ -1,4 +1,4 @@
-package com.example.pandemicshootout.vaccine;
+package com.example.pandemicshootout.bed;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -14,9 +14,9 @@ import com.example.pandemicshootout.R;
 
 import java.util.ArrayList;
 
-public class VaccineAdapter extends ArrayAdapter<VaccineView> {
-    public VaccineAdapter(@NonNull Activity context, ArrayList<VaccineView> medicineViewArrayList) {
-        super(context, 0,medicineViewArrayList);
+public class BedAdapter extends ArrayAdapter<BedView> {
+    public BedAdapter(@NonNull Activity context, ArrayList<BedView> bedViewArrayList) {
+        super(context, 0,bedViewArrayList);
     }
 
     @NonNull
@@ -30,17 +30,17 @@ public class VaccineAdapter extends ArrayAdapter<VaccineView> {
             );
         }
 
-        VaccineView vaccineView = getItem(position);
+        BedView bedView = getItem(position);
 
-        TextView vaccineName=listItemView.findViewById(R.id.mn);
+        TextView medicineName=listItemView.findViewById(R.id.mn);
         TextView storeName=listItemView.findViewById(R.id.mn2);
         TextView price=listItemView.findViewById(R.id.mn3);
         TextView stock=listItemView.findViewById(R.id.mn4);
+        stock.setVisibility(View.GONE);
 
-       vaccineName.setText("Center Name: "+vaccineView.getName());
-        storeName.setText("Pincode: "+vaccineView.getPincode());
-        price.setText("Age Limit: "+String.valueOf(vaccineView.getAge_limit()));
-        stock.setText("Vaccine: "+String.valueOf(vaccineView.getVaccine()));
+        medicineName.setText("Name: "+bedView.getName());
+        storeName.setText("Blood Group: "+bedView.getContact());
+        price.setText("Pincode: "+String.valueOf(bedView.getBeds()));
 
         return listItemView;
     }
