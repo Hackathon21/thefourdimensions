@@ -9,6 +9,5 @@ import java.util.UUID;
 
 @Repository
 public interface MedicineRepository extends JpaRepository<Medicine, UUID> {
-
     Medicine getMedicineByName(String name);
 }

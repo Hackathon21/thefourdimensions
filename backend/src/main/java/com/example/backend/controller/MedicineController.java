@@ -17,9 +17,9 @@ public class MedicineController {
     private MedicineService medicineService;
 
     @GetMapping("/{name}/{pincode}")
-    public ResponseEntity<?> getMedicines(@PathVariable String medicine, @PathVariable String pincode){
+    public ResponseEntity<?> getMedicines(@PathVariable String name, @PathVariable String pincode){
         try {
-            return new ResponseEntity<>(medicineService.getMedicines(medicine,pincode),HttpStatus.OK);
+            return new ResponseEntity<>(medicineService.getMedicines(name,pincode),HttpStatus.OK);
         }catch(Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

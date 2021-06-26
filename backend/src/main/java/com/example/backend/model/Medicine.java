@@ -3,6 +3,8 @@ package com.example.backend.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -10,8 +12,8 @@ public class Medicine {
     @Id
     private UUID id;
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Store store;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Store> stores;
     private String name;
     private long stock;
     private float price;
@@ -19,11 +21,10 @@ public class Medicine {
 
     public Medicine(){
         this.id = UUID.randomUUID();
+        this.stores = new ArrayList<>();
     }
 
-    public Medicine(Store store, String name, long stock, float price) {
-        this.storeName=store.getName();
-        this.store = store;
+    public Medicine(String name, long stock, float price) {
         this.name = name;
         this.stock = stock;
         this.price = price;
@@ -35,14 +36,6 @@ public class Medicine {
 
     public void setId(UUID id) {
         this.id = id;
-    }
-
-    public Store getStore() {
-        return store;
-    }
-
-    public void setStore(Store store) {
-        this.store = store;
     }
 
     public String getName() {
@@ -75,5 +68,17 @@ public class Medicine {
 
     public void setStoreName(String storeName) {
         this.storeName = storeName;
+    }
+
+    public List<Store> getStores() {
+        return stores;
+    }
+
+    public void setStores(List<Store> stores) {
+        this.stores = stores;
+    }
+
+    public void addStore(Store s){
+        this.stores.add(s);
     }
 }
