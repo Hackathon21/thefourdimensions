@@ -15,12 +15,14 @@ public class Medicine {
     private String name;
     private long stock;
     private float price;
+    private String storeName;
 
     public Medicine(){
         this.id = UUID.randomUUID();
     }
 
     public Medicine(Store store, String name, long stock, float price) {
+        this.storeName=store.getName();
         this.store = store;
         this.name = name;
         this.stock = stock;
@@ -65,5 +67,13 @@ public class Medicine {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public String getStoreName() {
+        return storeName;
+    }
+
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
     }
 }

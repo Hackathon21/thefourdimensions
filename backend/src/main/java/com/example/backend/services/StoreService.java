@@ -29,41 +29,9 @@ public class StoreService {
         }
     }
 
-    public void addFile(UUID id, MultipartFile file)throws Exception{
-        try {
-            Store store = repo.getById(id);
-            store.setFilename(file.getOriginalFilename());
-            store.setContentType(file.getContentType());
-            updateStore(store);
-            String uploadDir = "D:\\uploads\\";
-            String path = uploadDir;
-            file.transferTo(new File(path+file.getOriginalFilename()));
-        }catch (Exception e){
-            throw e;
-        }
-    }
-
     public void updateStore(Store store){
         try{
             repo.save(store);
-        }catch (Exception e){
-            throw e;
-        }
-    }
-
-    public Store getStore(UUID id){
-        try{
-            Store store = repo.getById(id);
-            return store;
-        }catch (Exception e){
-            throw e;
-        }
-    }
-
-    public List<Medicine> getMedicineList(UUID id){
-        try {
-            Store store = repo.getById(id);
-            return store.getMedicineList();
         }catch (Exception e){
             throw e;
         }
@@ -80,21 +48,4 @@ public class StoreService {
             throw e;
         }
     }
-
-    public void updateMedicineList(Store store,MedicineUpload medicineUpload){
-        try{
-            Medicine m = medicineService.getByName(medicineUpload.getName());
-            if(m==null){
-                m = new Medicine(store, medicineUpload.getName(), medicineUpload.getStock(), medicineUpload.getPrice());
-            }
-            else{
-                m.setPrice(medicineUpload.getPrice());
-                m.setStock(medicineUpload.getStock() + m.getStock());
-            }
-            medicineService.updateMedicine(m);
-        }catch(Exception e){
-            throw e;
-        }
-    }
-
 }

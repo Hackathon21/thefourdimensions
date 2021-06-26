@@ -15,16 +15,12 @@ public class Store {
     private String name;
     private String address;
     private String phoneNumber;
-    private String filename;
-    private String contentType;
     private String pincode;
     @OneToMany(cascade = CascadeType.ALL)
     private List<Medicine> medicineList;
 
     public Store() {
         this.id=UUID.randomUUID();
-        this.filename = "";
-        this.contentType = "";
         this.medicineList = new ArrayList<>();
     }
 
@@ -65,22 +61,6 @@ public class Store {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public String getFilename() {
-        return filename;
-    }
-
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
-
-    public String getContentType() {
-        return contentType;
-    }
-
-    public void setContentType(String contentType) {
-        this.contentType = contentType;
     }
 
     public List<Medicine> getMedicineList() {
