@@ -1,0 +1,24 @@
+{
+  "name": "thefourdimensions",
+  "version": "1.0.0",
+  "description": "API with dummy data for the model app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hackathon21/thefourdimensions.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hackathon21/thefourdimensions/issues"
+  },
+  "homepage": "https://github.com/Hackathon21/thefourdimensions#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1"
+  }
+}
