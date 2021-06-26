@@ -1,10 +1,11 @@
-package com.example.pandemicshootout;
+package com.example.pandemicshootout.vaccine;
 
 import android.os.Bundle;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.pandemicshootout.R;
 import com.example.pandemicshootout.medicine.MedicineAdapter;
 import com.example.pandemicshootout.medicine.MedicineView;
 

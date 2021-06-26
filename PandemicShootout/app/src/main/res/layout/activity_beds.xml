@@ -24,6 +24,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
         android:backgroundTint="#5CB4EF"
+        android:onClick="ab"
         android:text="Check Availability"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

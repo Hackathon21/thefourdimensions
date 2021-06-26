@@ -9,11 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PandemicShootout">
-        <activity android:name=".Availabledonors"></activity>
-        <activity android:name=".Available_vaccine" />
+        <activity android:name=".donor.Availabledonors"></activity>
+        <activity android:name=".vaccine.Available_vaccine" />
         <activity android:name=".medicine.AvailableMed" />
         <activity android:name=".Medicn_stock" />
-        <activity android:name=".AvailableBeds" />
+        <activity android:name=".bed.AvailableBeds" />
         <activity android:name=".Beds" />
         <activity android:name=".Plasma" />
         <activity android:name=".Vaccine" />
