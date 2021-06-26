@@ -28,8 +28,6 @@ public class StoreController {
     @Autowired
     StoreService service;
     @Autowired
-    HttpServletRequest request;
-    @Autowired
     MedicineService service1;
 
     @PostMapping("/createStore")
@@ -42,38 +40,23 @@ public class StoreController {
         }
     }
 
-    @PostMapping("/uploadFile/{id}")
-    public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file, @PathVariable String id){
-        try {
-            UUID uuid = UtilFunctions.getUUID(id);
-            service.addFile(uuid, file);
-            return ResponseEntity.ok("File Uploaded!");
-        }catch (Exception e){
-            return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
-        }
-    }
-
-    @GetMapping("/downloadFile/{id}")
-    public ResponseEntity<?> downloadFile(@PathVariable String id){
-        UUID uuid = UtilFunctions.getUUID(id);
-        try{
-            Store store = service.getStore(uuid);
-            Path path = Paths.get("D:\\uploads\\"+store.getFilename());
-            Resource resource = new UrlResource(path.toUri());
-            return ResponseEntity.ok()
-                    .contentType(MediaType.parseMediaType(store.getContentType()))
-                    .header(HttpHeaders.CONTENT_DISPOSITION,"attachment; filename=\""+resource.getFilename()+"\"")
-                    .body(resource);
-        }catch (Exception e){
-            return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
     @PostMapping("/addMedicine/{phone}")
     public ResponseEntity<?> addMedicine(@PathVariable String phone,@RequestBody MedicineUpload medicine){
         try{
             Store store = service.getByPhone(phone);
-            service.updateMedicineList(store,medicine);
+            Medicine medicine1 = service1.getByName(medicine.getName());
+            if(medicine1==null){
+                medicine1 = new Medicine();
+                medicine1.setName(medicine.getName());
+                medicine1.setStock(medicine.getStock());
+                medicine1.setPrice(medicine.getPrice());
+                medicine1.setStore(store);
+                store.addMedicine(medicine1);
+            }else{
+                medicine1.setStock(medicine.getStock()+medicine1.getStock());
+                medicine1.setPrice(medicine.getPrice());
+                service1.updateMedicine(medicine1);
+            }
             service.updateStore(store);
             return new ResponseEntity<>("Successfully updated!",HttpStatus.OK);
         }catch (Exception e){
