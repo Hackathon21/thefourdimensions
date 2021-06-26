@@ -2,6 +2,7 @@ package com.example.pandemicshootout.medicine;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -13,7 +14,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.pandemicshootout.Constants;
 import com.example.pandemicshootout.R;
 
 import org.json.JSONArray;
@@ -38,28 +38,22 @@ public class AvailableMed extends AppCompatActivity {
         String name = i.getExtras().getString("name");
         String pincode = i.getExtras().getString("pincode");
 
-        url = Constants.server+name+"/"+pincode;
+//        url = Constants.server+"/medicine/"+name+"/"+pincode;
+        url = "http://192.168.10.110:8080/medicine/Solvincold/387843";
         requestQueue = Volley.newRequestQueue(this);
-        getData();
 
         MedicineAdapter md=new MedicineAdapter(this,m);
-        medlist.setAdapter(md);
-        m.add(new MedicineView(30,4,"Solvin cold","Mystore1"));
-        m.add(new MedicineView(30,4,"Solvin cold","Mystore1"));
-        m.add(new MedicineView(30,4,"Solvin cold","Mystore1"));
-        m.add(new MedicineView(30,4,"Solvin cold","Mystore1"));
-        m.add(new MedicineView(30,4,"Solvin cold","Mystore1"));
 
-    }
 
-    private void getData(){
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                JSONArray jsonArray = response;
+                medlist.setAdapter(md);
+                Log.d("RESPONSE",response.toString());
                 try {
-                    for(int i=0;i<jsonArray.length();i++){
-                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    for(int i = 0; i< response.length(); i++){
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        Log.d("OBJECT",jsonObject.toString());
                         float price = (float) jsonObject.getDouble("price");
                         long stock = (long) jsonObject.getLong("stock");
                         String name = jsonObject.getString("name");
@@ -77,5 +71,16 @@ public class AvailableMed extends AppCompatActivity {
             }
         });
         requestQueue.add(jsonArrayRequest);
+
+//        m.add(new MedicineView(30,4,"Solvin cold","Mystore1"));
+//        m.add(new MedicineView(30,4,"Solvin cold","Mystore1"));
+//        m.add(new MedicineView(30,4,"Solvin cold","Mystore1"));
+//        m.add(new MedicineView(30,4,"Solvin cold","Mystore1"));
+//        m.add(new MedicineView(30,4,"Solvin cold","Mystore1"));
+
+    }
+
+    private void getData(ArrayList<MedicineView> m){
+
     }
 }

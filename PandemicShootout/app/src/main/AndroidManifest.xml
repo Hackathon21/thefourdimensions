@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pandemicshootout">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,8 +10,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.PandemicShootout">
-        <activity android:name=".donor.Availabledonors"></activity>
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/network" />
+
+        <activity android:name=".donor.Availabledonors" />
         <activity android:name=".vaccine.Available_vaccine" />
         <activity android:name=".medicine.AvailableMed" />
         <activity android:name=".Medicn_stock" />
