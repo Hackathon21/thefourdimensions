@@ -9,6 +9,7 @@ import com.example.pandemicshootout.R;
 
 import java.util.ArrayList;
 
+
 public class Availabledonors extends AppCompatActivity {
     ListView plasmalist;
 
@@ -17,14 +18,13 @@ public class Availabledonors extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_availabledonors);
         plasmalist=findViewById(R.id.plasmalist);
-        final ArrayList<plasmaView> m=new ArrayList<plasmaView>();
-        plasmaAdapter md=new plasmaAdapter(this,m);
+        final ArrayList<PlasmaView> m=new ArrayList<PlasmaView>();
+        PlasmaAdapter md=new PlasmaAdapter(this,m);
         plasmalist.setAdapter(md);
-        m.add(new plasmaView(30,4,"ICU Bed","CHC1"));
-        m.add(new plasmaView(30,4,"Ventailator Bed","Narouli1"));
-        m.add(new plasmaView(30,4,"Solvin cold","Mystore1"));
-        m.add(new plasmaView(30,4,"Solvin cold","Mystore1"));
-        m.add(new plasmaView(30,4,"Solvin cold","Mystore1"));
+        m.add(new PlasmaView("Xyz","B-positive","fvfgiurwegiufer","244412","354358734"));
+        m.add(new PlasmaView("Xyz","B-positive","fvfgiurwegiufer","244412","354358734"));
+        m.add(new PlasmaView("Xyz","B-positive","fvfgiurwegiufer","244412","354358734"));
+        m.add(new PlasmaView("Xyz","B-positive","fvfgiurwegiufer","244412","354358734"));
     }
 
 }

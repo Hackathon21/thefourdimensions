@@ -16,13 +16,12 @@ public class AvailableBeds extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_availablebeds);
         bedlist=findViewById(R.id.bedlist);
-        final ArrayList<bedView> m=new ArrayList<bedView>();
-        bedAdapter md=new bedAdapter(this,m);
+        final ArrayList<BedView> m=new ArrayList<BedView>();
+        BedAdapter md=new BedAdapter(this,m);
         bedlist.setAdapter(md);
-        m.add(new bedView(30,4,"ICU Bed","CHC1"));
-        m.add(new bedView(30,4,"Ventailator Bed","Narouli1"));
-        m.add(new bedView(30,4,"Solvin cold","Mystore1"));
-        m.add(new bedView(30,4,"Solvin cold","Mystore1"));
-        m.add(new bedView(30,4,"Solvin cold","Mystore1"));
+        m.add(new BedView("ICU Bed","437568436543",4,"45.55","56.55"));
+        m.add(new BedView("ICU Bed","437568436543",4,"45.55","56.55"));
+        m.add(new BedView("ICU Bed","437568436543",4,"45.55","56.55"));
+        m.add(new BedView("ICU Bed","437568436543",4,"45.55","56.55"));
     }
 }
