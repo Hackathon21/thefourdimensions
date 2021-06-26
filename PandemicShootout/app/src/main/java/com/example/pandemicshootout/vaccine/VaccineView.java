@@ -7,9 +7,9 @@ public class VaccineView {
     private double longitude;
     private long age_limit;
     private String vaccine;
-    private long available_capacity;
+    private int available_capacity;
 
-    public VaccineView(String name, long available_capacity, long age_limit, String vaccine) {
+    public VaccineView(String name, int available_capacity, long age_limit, String vaccine) {
         this.name = name;
         this.age_limit = age_limit;
         this.vaccine = vaccine;
@@ -62,5 +62,13 @@ public class VaccineView {
 
     public void setVaccine(String vaccine) {
         this.vaccine = vaccine;
+    }
+
+    public int getAvailable_capacity() {
+        return available_capacity;
+    }
+
+    public void setAvailable_capacity(int available_capacity) {
+        this.available_capacity = available_capacity;
     }
 }
